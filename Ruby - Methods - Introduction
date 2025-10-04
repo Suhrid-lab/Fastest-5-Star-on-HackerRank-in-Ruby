@@ -1,0 +1,18 @@
+require 'prime'
+def prime?(number)
+    Prime.prime? (number)
+end 
+
+__a1 = [1, 2, 7, 18, 97, 171]
+
+unless Object.respond_to?(:prime?, true)
+  puts 'Please define your method first!'
+  exit(0)
+end
+
+unless __a1.map { |x| prime?(x) } == __a1.map { |x| Prime.prime?(x) }
+  puts 'Ensure that your prime checker is correct!'
+  exit(0)
+end
+
+puts 'You have successfully completed the challenge.'
