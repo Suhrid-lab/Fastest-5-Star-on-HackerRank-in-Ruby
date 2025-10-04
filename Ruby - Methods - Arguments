@@ -1,0 +1,19 @@
+def take(s, len =1)
+    s[len..]
+end
+
+unless Object.respond_to?(:take, true)
+  puts 'You must define the method first!'
+  exit(0)
+end
+
+a1 = take([-4, 5, 9, 0], 4) == []
+a2 = take(['a', 'b', 56, /d+/], 1) == ['b', 56, /d+/]
+a3 = take([121, 35, 523, 898], 0) == [121, 35, 523, 898]
+
+unless [a1, a2, a3].all?
+  puts 'So close! Please recheck your output!'
+  exit(0)
+end
+
+puts 'Yay! You have successfully completed your challenge!'
