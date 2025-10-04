@@ -1,0 +1,23 @@
+# Initialize 3 variables here as explained in the problem statement
+array = Array.new
+array_1 = Array.new(1)
+array_2 = Array.new(2, 10)
+
+unless defined? array
+    puts "variable named array is not defined"
+    exit 0
+else
+    puts "variable named array is defined!"
+end
+
+unless array.is_a? Array
+    puts "array must belong to the class `Array`"
+    exit 0
+else
+    puts "array variable belongs to the class `Array`!"
+end
+
+unless 0 == array.size
+    puts "array must be of size 0"
+    exit 0
+else
