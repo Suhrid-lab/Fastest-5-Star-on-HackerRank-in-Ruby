@@ -1,0 +1,23 @@
+def single_quote
+  'Hello World and others!'
+end
+
+def double_quote
+ "Hello World and others!"
+end
+
+def here_doc
+    document = <<-HERE2
+    Hello World and others!
+    HERE2
+end
+
+def __check_output
+  r1, r2, r3 = single_quote, double_quote, here_doc
+  flag = false
+  if r1.nil? or r1.index("Hello World and others!").nil?
+    puts 'Ah! Please check the output of your single quote method'
+    flag = true
+  end
+
+  exit(0) if flag
