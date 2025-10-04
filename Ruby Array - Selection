@@ -1,0 +1,64 @@
+def select_arr(arr)
+    arr.select do |n|
+        n.odd?
+    end
+end
+
+def reject_arr(arr)
+    arr.reject do |n|
+        n % 3 == 0
+    end
+end
+
+def delete_arr(arr)
+    arr.delete_if do |n|
+        n < 0
+    end
+end
+
+def keep_arr(arr)
+    arr.keep_if { |n| n >= 0 }
+end
+
+
+arr = [3, 4, 2, 1, 2, 3, 4, 5, 6]
+
+odd_elements = select_arr(arr)
+
+unless odd_elements == arr.select {|a| a % 2 == 1}
+    val = "nil" if val.nil?
+    puts "You have to return only odd valued elements from the array."
+    exit(0)
+else
+    puts "Correct! You have returned odd valued elements from the array!"
+end
+
+reject_div_3 = reject_arr(arr)
+
+unless reject_div_3 == arr.reject {|a| a % 3 == 0}
+    val = "nil" if val.nil?
+    puts "You have to return all numbers that are not divisible by 3"
+    exit(0)
+else
+    puts "Correct! You have returned all numbers that are divisible by 3!"
+end
+
+delete_neg = delete_arr(arr)
+
+unless delete_neg == arr.delete_if {|a| a < 0}
+    val = "nil" if val.nil?
+    puts "You have to delete all the negative elements of the array"
+    exit(0)
+else
+    puts "Correct! You have deleted all the negative elements of the array!"
+end
+
+keep_pos = keep_arr(arr)
+
+unless keep_pos == arr.keep_if {|a| a > 0}
+    val = "nil" if val.nil?
+    puts "You have to retain all the positive elements of the array"
+    exit(0)
+else
+    puts "Correct! You have retained all the positive elements of the array!"
+end
