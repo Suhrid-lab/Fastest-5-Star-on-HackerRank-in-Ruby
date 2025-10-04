@@ -1,0 +1,33 @@
+class User
+    attr_accessor :score, :init_score
+    def initialize(score)
+        @score = score
+        @init_score = score
+    end
+
+    def update_score
+        @score += 1
+        puts "Score Updated"
+    end
+
+    def to_s
+        "Score: "
+    end
+end
+
+arr = (0...gets.to_i).map {|i| User.new(Random.rand(10))}
+
+def scoring(array)
+    array.each do |user|
+        user.update_score
+    end
+end
+
+
+scoring(arr)
+
+arr.each do |a|
+    if a.score != (a.init_score + 1)
+        puts "Score not updated"
+    end
+end
