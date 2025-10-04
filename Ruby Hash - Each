@@ -1,0 +1,21 @@
+def iter_hash(hash)
+    hash.each do |key, value|
+        puts key
+        puts value
+    end
+end
+
+x = {"a" => 1, "b" => 2, "c" => 3}
+iter_hash(x)
+
+y = {:a => 1, :b => 10, :c => "some_string"}
+iter_hash(y)
+
+t = gets.to_i
+z = Hash.new
+1.upto(t).each do |i|
+    a, b = gets.strip.split
+    z[a] = b
+end
+
+iter_hash(z)
