@@ -1,0 +1,91 @@
+def init_array()
+    # create and return array with 10 elements ( integer ) in it
+    # DO NOT EDIT THIS FUNCTION
+    x = [9, 7, 6, 5, 4, 6, 7, 1, 2, 3]
+    x
+end
+def element_at(arr, index)
+    arr[index]
+end
+
+def inclusive_range(arr, start_pos, end_pos)
+    arr[start_pos..end_pos]
+end
+
+def non_inclusive_range(arr, start_pos, end_pos)
+    arr[start_pos...end_pos]
+end
+
+def start_and_length(arr, start_pos, length)
+    arr[start_pos,length] 
+end
+arr = init_array()
+
+unless arr.is_a? Array
+    puts "The variable returned from `init_array` is not an array"
+    exit(0)
+end
+
+unless 10 == arr.length
+    puts "Elements of the Array variable has to be exactly 10"
+    exit(0)
+else
+    puts "Correct! Elements of the Array variable are 10 in number!"
+end
+
+unless arr.all? {|element| element.is_a? Integer}
+    puts "All the elements of the Array initialized has to be integers"
+    exit(0)
+else
+    puts "Correct! All the elements of the Array are Integers!"
+end
+
+ind = 8
+
+val = element_at(arr, ind)
+
+unless arr[ind] == element_at(arr, ind)
+    x = val.to_s
+    x = "nil" if val.nil?
+    puts "Element at #{ind} returns #{x} is not #{arr[ind]}"
+    exit(0)
+else
+    puts "Correct! Element at #{ind} is #{arr[ind]}!"
+end
+
+st = 4
+en = 9
+
+val = inclusive_range(arr, st, en)
+unless arr[st..en] == val
+    val = "nil" if val.nil?
+    puts "The elements between the index #{st} and #{en} is #{arr[st..en]} and not #{val}"
+    exit(0)
+else
+    puts "Correct! The elements between the index #{st} and #{en} is #{val}!"
+end
+
+st = 3
+en = 8
+
+val = non_inclusive_range(arr, st, en)
+unless arr[st...en] == val
+    val = "nil" if val.nil?
+    puts "The elements between the index #{st} and #{en} (not included) is #{arr[st...en]} and not #{val}"
+    exit(0)
+else
+    puts "Correct! The elements between the index #{st} and #{en} (not inclusive) is #{val}!"
+end
+
+st = 3
+len = 6
+
+val = start_and_length(arr, st, len)
+
+unless arr[st, len] == val
+    val = "nil" if val.nil?
+    puts "The #{len} elements starting from #{st} are #{arr[st, len]} and not #{val}"
+    exit(0)
+else
+    puts "Correct! The #{len} elements starting from #{st} are #{val}!"
+end
