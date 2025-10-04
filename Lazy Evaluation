@@ -1,0 +1,19 @@
+def is_prime?(number)
+    return true if number == 2 || number == 5
+    return false if number == 1 || number.even? || number % 5 == 0
+    (3..Math.sqrt(number)).none? {|f| number % f == 0}
+end
+
+def is_palindromic?(number)
+    return false if number.digits[0] != number.digits[-1]
+    number.to_s == number.to_s.reverse
+end
+
+def prime_array (total)
+    out = 1.upto(Float::INFINITY).lazy.select do |number|
+        is_palindromic?(number) && is_prime?(number)
+    end.first(total).to_a
+    print out
+end
+
+prime_array(gets.to_i)
