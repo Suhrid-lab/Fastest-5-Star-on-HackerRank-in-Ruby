@@ -1,0 +1,32 @@
+def serial_average(key = "001-12.43-56.78")
+    serial = key[0, 3] # Extracts the first three characters
+    number1_str = key[4, 5] # Extracts the first number string
+    number2_str = key[10, 5] # Extracts the second number string
+  
+    number1 = number1_str.to_f
+    number2 = number2_str.to_f
+  
+    avg = (number1 + number2) / 2
+    avg = avg.round(2) # Rounds the average to 2 decimal places
+  
+    key[4, 11] = avg.to_s # Replaces the numbers and hyphen with the calculated average
+    return key
+  end
+
+
+def __check_output
+  unless Object.respond_to?(:serial_average, true)
+    puts 'You must define appropriate method.'
+    exit(0)
+  end
+
+  s1 = ["001-12.43-56.78", "789-01.09-78.89", "642-67.58-83.16"]
+  a1 = ["001-34.61", "789-39.99", "642-75.37"]
+
+  ans = s1.map { |x| serial_average(x) }
+
+  unless ans == a1
+    puts 'Oops! There seems to be some mistake. Recheck please?'
+    puts "You can check your output on example case '#{s1.first}'."
+    exit(0)
+  end
