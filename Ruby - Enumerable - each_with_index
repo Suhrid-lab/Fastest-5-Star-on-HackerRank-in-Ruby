@@ -1,0 +1,35 @@
+def skip_animals(animals, skip)
+ # Your code here
+ ret_array = []
+ animals.each_with_index { |item, index| ret_array.push("#{index}:#{item}") if index >= skip }
+ ret_array
+end
+a1 = ['bat', 'cow', 'jaguar', 'panda', 'tiger', 'deer']
+a2 = ['leopard', 'bear', 'fox', 'wolf', 'dog', 'cat']
+
+def _print_animals(animals, skip)
+  animals_ = []
+  animals.each_with_index do |item, index|
+    next if index < skip
+    animals_.push("#{index}:#{item}")
+  end
+  animals_
+end
+
+user_result1 = skip_animals(a1, 3)
+user_result2 = skip_animals(a2, 0)
+
+test_result1 = _print_animals(a1, 3)
+test_result2 = _print_animals(a2, 0)
+
+if not (user_result1.is_a? Array and user_result2.is_a? Array)
+  puts 'Your method must return an array.'
+  exit(0)
+end
+
+if (user_result1 != test_result1) or (user_result2 != test_result2)
+  puts 'Wrong! Please check the return value of your program.'
+  exit(0)
+end
+
+puts 'Correct! You have a good understanding of Ruby.'
