@@ -1,0 +1,35 @@
+hackerrank = Hash.new
+
+(0..100).each do |id|
+    hackerrank[id] = id * id + id
+end
+
+hackerrank["dheeraj"] = 100
+hackerrank["shikhar"] = 200
+hackerrank["abhiranjan"] = 300
+hackerrank.store(543121,100)
+hackerrank.keep_if {|a,b|  a.is_a? Integer }
+hackerrank.delete_if {|a,b| a.even? }
+
+if hackerrank.has_key? 543121 and hackerrank[543121] = 100
+    puts "Correct! You have added the key, value pair 543121, 100 to the Hash object `hackerrank`."
+else
+    puts "You have not added the key, value pair 543121, 100."
+    exit(0)
+end
+
+if hackerrank.has_key?("dheeraj") or hackerrank.has_key?("shikhar") or hackerrank.has_key?("abhiranjan")
+    puts "Non Integer keys are retained. You have to remove them."
+    exit(0)
+else
+    puts "Correct! Only integer keys are retained."
+end
+
+hackerrank.keys.each do |id|
+    if id % 2 == 0 and hackerrank.has_key? id
+        puts "Even valued keys should be deleted"
+        exit(0)
+    end
+end
+
+puts "Correct! Even valued pairs are deleted."
