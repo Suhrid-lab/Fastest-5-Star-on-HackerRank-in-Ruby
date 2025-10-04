@@ -1,0 +1,50 @@
+def transcode(encoded_input_string)
+    encoded_input_string.force_encoding(Encoding::UTF_8)
+end
+
+def transcode_to_ISO_8859_1(encoded_input_string)
+    encoded_input_string.force_encoding(Encoding::ISO_8859_1)
+end
+transcode(transcode_to_ISO_8859_1("Bhavana"))
+
+def __check_output
+  unless Object.respond_to?(:transcode, true)
+    puts 'Please define the appropriate method.'
+    exit(0)
+  end
+
+  s1, s2 = 'ABC äöüÄÖÜ', 'display on all browsers as Δ, Й, ק, م, ๗'
+
+  s1.force_encoding('ISO-8859-1')
+  s2.force_encoding('ISO-8859-1')
+  s3 = s1.dup
+  s4 = s2.dup
+
+  s3 = transcode(s3)
+  s4 = transcode(s4)
+
+  if s3.nil? or s4.nil?
+    puts "The function `transcode` must return a string object"
+    exit(0)
+  end
+
+  ans = [s3, s4].map { |x| x.encoding == Encoding::UTF_8 }
+
+  unless ans.all?
+    puts 'Oops! Your output encoding seems to be incorrect. Recheck please?'
+    exit(0)
+  end
+
+  s1.force_encoding('UTF-8')
+  s2.force_encoding('UTF-8')
+  ans = (s1 == s3) and (s2 == s4)
+
+  unless ans
+    puts 'Oops! Your output strings do not match.'
+    exit(0)
+  end
+
+end
+
+__check_output
+puts 'You have successfully completed the encoding challenge.'
