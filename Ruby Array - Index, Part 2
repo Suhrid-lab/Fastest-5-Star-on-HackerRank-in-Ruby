@@ -1,0 +1,93 @@
+def init_array()
+    # create and return array with 10 elements ( integer ) in it
+    x = [9, 7, 6, 5, 4, 6, 7, 1, 2, 3]
+    x
+end
+def neg_pos(arr, index)
+    arr[-index]
+end
+
+def first_element(arr)
+    arr.first  
+end
+
+def last_element(arr)
+    arr.last
+end
+
+def first_n(arr, n)
+    arr.take(n)
+end
+
+def drop_n(arr, n)
+    arr.drop(n)
+end
+
+arr = init_array()
+
+unless arr.is_a? Array
+    puts "The variable returned from `init_array` is not an array"
+    exit(0)
+end
+
+unless 10 == arr.length
+    puts "Elements of the Array variable has to be exactly 10"
+    exit(0)
+else
+    puts "Correct! Elements of the Array variable are 10 in number!"
+end
+
+unless arr.all? {|element| element.is_a? Integer}
+    puts "All the elements of the Array initialized has to be integers"
+    exit(0)
+else
+    puts "Correct! All the elements of the Array are Integers!"
+end
+
+neg_ind = 2
+val = neg_pos(arr, neg_ind)
+unless arr[-neg_ind] == val
+    val = "nil" if val.nil?
+    puts "The element at #{neg_ind} from the end of the array is not #{val}"
+    exit(0)
+else
+    puts "Correct! The element at #{neg_ind} from the end of the array is #{val}"
+end
+
+val = first_element(arr)
+unless arr.first == first_element(arr)
+    val = "nil" if val.nil?
+    puts "The first element of the array is not #{val}"
+    exit(0)
+else
+    puts "Correct! The first element of the array is #{val}!"
+end
+
+val = last_element(arr)
+unless arr.last == last_element(arr)
+    val = "nil" if val.nil?
+    puts "The last element of the array is not #{val}"
+    exit(0)
+else
+    puts "Correct! The last element of the array is #{val}!"
+end
+
+len = 4
+val = first_n(arr, len)
+unless val == arr.take(len)
+    val = "nil" if val.nil?
+    puts "The first #{len} elements of the array are not #{val}"
+    exit(0)
+else
+    puts "Correct! The first #{len} elements of the array are #{val}!"
+end
+
+len = 5
+val = drop_n(arr, len)
+unless val == arr.drop(len)
+    val = "nil" if val.nil?
+    puts "The elements of the array after dropping #{len} elements are not #{val}"
+    exit(0)
+else
+    puts "Correct! The elements of the array after dropping #{len} elements are #{val}!"
+end
