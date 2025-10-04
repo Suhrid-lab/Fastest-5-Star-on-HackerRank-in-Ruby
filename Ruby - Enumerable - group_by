@@ -1,0 +1,44 @@
+def group_by_marks(marks, pass_marks)
+  # Use group_by to group students based on whether their mark is greater than pass_marks
+  # The block returns true for passed students and false for failed students.
+  grouped_students = marks.group_by { |name, score| score >= pass_marks }
+
+  # Initialize an empty hash to store the final results
+  results = {}
+
+  # Assign the "Passed" key if there are any passed students
+  # grouped_students[true] will contain an array of [name, score] for passed students
+  results["Passed"] = grouped_students[true] unless grouped_students[true].nil?
+
+  # Assign the "Failed" key if there are any failed students
+  # grouped_students[false] will contain an array of [name, score] for failed students
+  results["Failed"] = grouped_students[false] unless grouped_students[false].nil?
+
+  results
+end
+def _group_by_marks(marks, n)
+  marks.group_by do |key, value|
+    if value < n
+      'Failed'
+    else
+      'Passed'
+    end
+  end
+end
+
+marks = {"Ramesh" => 23, "Vivek" => 40, "Harsh" => 88, "Mohammad" => 60}
+
+n = gets.to_i
+t1 = group_by_marks(marks, n)
+a1 = _group_by_marks(marks, n)
+
+unless t1.is_a? Hash
+  puts 'Watch out! Your method must return a Hash.'
+end
+
+unless t1 == a1
+  puts 'Ooops! Seems like you missed something in output.'
+  exit(0)
+end
+
+puts 'Cool! You have completed the group_by challenge!'
