@@ -1,0 +1,37 @@
+class Coder
+
+    def initialize(limit)
+        @o_1 = false
+        @counter = 0
+        @limit = limit
+    end
+
+    def practice
+        @counter = @counter + 1
+        if @limit == @counter
+            @o_1 = true
+        end
+
+        unless oh_one?
+            puts "still not O(1)"
+        else
+            puts "finally O(1)"
+        end
+    end
+
+    def oh_one?
+        @o_1 == true
+    end
+end
+
+def infinite_loop
+    hr_counter = gets.to_i
+    coder = Coder.new(hr_counter)
+    loop do
+        coder.practice
+        if coder.oh_one?
+            break
+        end
+    end
+end
+infinite_loo
